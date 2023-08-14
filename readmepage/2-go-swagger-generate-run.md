@@ -1,3 +1,5 @@
+[BACK TO HOME](https://github.com/denitiawan/research-swagger-gopath-nethttp/tree/main#readme)
+
 # Generate & Run Swagger on GO 1.16.15
 Date : 14-08-2023
 
@@ -83,9 +85,121 @@ https://github.com/nicholasjackson/building-microservices-youtube/blob/episode_7
 ```
 swagger generate spec -o ./v1/swagger.yaml --scan-models
 ```
+```
+basePath: /
+consumes:
+- application/json
+definitions:
+  DemoLoginResponse:
+    properties:
+      key:
+        type: string
+        x-go-name: Key
+      value:
+        type: string
+        x-go-name: Value
+    type: object
+    x-go-package: nexsoft.co.id/nexchief2/demoswagger/demologin
+  DemoUserResponse:
+    properties:
+      code:
+        type: string
+        x-go-name: Code
+      id:
+        format: int64
+        type: integer
+        x-go-name: Id
+      password:
+        type: string
+        x-go-name: Password
+      username:
+        type: string
+        x-go-name: Username
+    type: object
+    x-go-package: nexsoft.co.id/nexchief2/demoswagger/demouser
+info:
+  description: Implement Swagger on GO 1.16.15 with (GOPATH) environtment
+  title: Demo Swagger on GO
+  version: 1.0.0
+paths:
+  /demo/login:
+    post:
+      description: Demo Login
+      operationId: DemoLoginRequest
+      parameters:
+      - in: query
+        name: username
+        type: string
+        x-go-name: Username
+      - in: query
+        name: password
+        type: string
+        x-go-name: Password
+      responses:
+        "200":
+          $ref: '#/responses/DemoLoginResponse'
+      tags:
+      - AUTH
+  /demo/user/add:
+    post:
+      description: Demo User
+      operationId: DemoUserRequest
+      parameters:
+      - in: query
+        name: code
+        type: string
+        x-go-name: Code
+      - in: query
+        name: username
+        type: string
+        x-go-name: Username
+      - in: query
+        name: password
+        type: string
+        x-go-name: Password
+      responses:
+        "200":
+          $ref: '#/responses/DemoUserResponse'
+      tags:
+      - USER
+produces:
+- application/json
+responses:
+  DemoLoginResponse:
+    description: ""
+    headers:
+      Data: {}
+      code:
+        format: int64
+        type: integer
+      errorMessage:
+        type: string
+      message:
+        type: string
+    schema:
+      $ref: '#/definitions/DemoLoginResponse'
+  DemoUserResponse:
+    description: ""
+    headers:
+      Data: {}
+      code:
+        format: int64
+        type: integer
+      errorMessage:
+        type: string
+      message:
+        type: string
+    schema:
+      $ref: '#/definitions/DemoUserResponse'
+schemes:
+- http
+swagger: "2.0"
+
+```
 
 ## 7) Routing Swagger on Main or Controller class
 ```
+// Notes**
 // Http.Dir files must be fullpath, and set on config file 
 handler.Handle("/v1/swagger.yaml", http.FileServer(http.Dir("C:\\Users\\Deni Setiawan\\Data\\nexsoft\\nexchief\\2023-08-04 Implementasi Swagger UI Nexchief2\\NEXCHIEF2_GO_PATH\\src\\nexsoft.co.id\\nexchief2")))
 
