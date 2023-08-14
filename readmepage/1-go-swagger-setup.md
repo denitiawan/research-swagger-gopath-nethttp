@@ -40,9 +40,7 @@ C:\Users\Deni Setiawan\go
 
 ## 4) Add Go env into PATH variable
 ```
-PATH=%GOPATH%
-	 %GOROOT%\bin
-	 %GOBIN%				
+PATH=%GOPATH%;%GOROOT%\bin;%GOBIN%				
 ```
 
 
