@@ -13,3 +13,5 @@
 - Using Swagger-UI
 ![image](https://github.com/denitiawan/research-swagger-gopath-nethttp/assets/11941308/1dc36bff-9c26-408b-8532-7baf9dac3e7c)
 
+## license
+[MIT License](LICENSE)
